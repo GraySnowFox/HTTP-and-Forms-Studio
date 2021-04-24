@@ -4,12 +4,32 @@
 	<meta charset="utf-8">
 	<script>
 		function setSearchEngine(){
+			console.log("Search Engine set");
+			
+			let engineSelect = document.querySelector("input[name=engine]:checked");
+			selection = engineSelect.value;
+			console.log(selection);
+			var actions ={
+				"google": "http://www.google.com/",
+				"duckDuckGo": "http://www.duckduckgo.com/",
+				"bing": "http://www.bing.com/",
+				"ask": "http://www.ask.com/"
+			};
 
+			let form = document.getElementById("searchForm");
+			console.log(actions);
+			form.setAttribute("action", actions[engineSelect.value]);
+
+			
 		}
 			
 		// TODO: create a handler
     window.addEventListener("load", function(){
-        let selection = document.getElementById
+        let form = document.getElementById("searchForm");
+
+		form.addEventListener("submit" , function(event){
+			setSearchEngine();
+		});
     });
 	</script>
 </head>
